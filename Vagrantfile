@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     # Managers
     (1..3).each do |number|
         config.vm.define "m#{number}" do |node|
-            node.vm.network "private_network", ip: "192.168.99.20#{number}"
+            node.vm.network "public_network", bridge: "wlan0"
             node.vm.hostname = "m#{number}"
         end  
     end
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     # Workers
     (1..4).each do |number|
         config.vm.define "w#{number}" do |node|
-            node.vm.network "private_network", ip: "192.168.99.21#{number}"
+            node.vm.network "public_network", bridge: "wlan0"
             node.vm.hostname = "w#{number}"
         end  
     end
